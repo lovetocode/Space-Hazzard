@@ -14,4 +14,3 @@ texture = ExtResource("1_5fsjk")
 polygon = PackedVector2Array(15, -15, 56, 5, 38, 35, 16, 29, 12, 38, -11, 38, -18, 30, -38, 36, -57, 5, -46, -1, -44, 1, -13, -18, -4, -37, 3, -38, 10, -20)
 
 [node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(1, -73)
