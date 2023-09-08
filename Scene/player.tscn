@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://Scene/Scripts/player.gd" id="1_yppp4"]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_yppp4")
 
