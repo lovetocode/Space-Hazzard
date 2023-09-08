@@ -4,9 +4,11 @@
 [ext_resource type="Script" path="res://Scene/Scripts/enemy.gd" id="1_wn1pc"]
 
 [node name="Enemy" type="Area2D"]
+scale = Vector2(0.5, 0.5)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_wn1pc")
+hp = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -1)

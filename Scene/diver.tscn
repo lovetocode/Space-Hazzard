@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1dro5gmhjuf8"]
+
+[ext_resource type="PackedScene" uid="uid://c3mfu6qgsdj3m" path="res://Scene/enemy.tscn" id="1_7ttkr"]
+[ext_resource type="Texture2D" uid="uid://dw6pjatrc1y42" path="res://assets/PNG/Enemies/enemyRed5.png" id="2_rvj0t"]
+
+[node name="Diver" instance=ExtResource("1_7ttkr")]
+scale = Vector2(0.7, 0.7)
+speed = 400
+hp = 1
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_rvj0t")
