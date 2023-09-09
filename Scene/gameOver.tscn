@@ -7,6 +7,10 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gr0iu"]
 bg_color = Color(0.945098, 0.313726, 0.729412, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
 
 [sub_resource type="LabelSettings" id="LabelSettings_f1neo"]
 font = ExtResource("1_w1h2o")
@@ -54,7 +58,7 @@ grow_vertical = 2
 theme = SubResource("Theme_xl8i7")
 theme_override_styles/panel = SubResource("StyleBoxFlat_gr0iu")
 
-[node name="Game Over" type="Label" parent="Panel"]
+[node name="GameOver" type="Label" parent="Panel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -67,7 +71,7 @@ text = "Game Over"
 label_settings = SubResource("LabelSettings_f1neo")
 vertical_alignment = 1
 
-[node name="HichScore" type="Label" parent="Panel"]
+[node name="highScore" type="Label" parent="Panel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -110,7 +114,6 @@ offset_right = 333.0
 offset_bottom = 222.0
 theme_override_fonts/font = ExtResource("1_w1h2o")
 theme_override_font_sizes/font_size = 35
-text = "Restart
-"
+text = "Retry"
 
 [connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]

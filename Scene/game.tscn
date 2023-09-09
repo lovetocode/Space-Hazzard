@@ -18,6 +18,7 @@ enemy_scenes = Array[PackedScene]([ExtResource("4_wcyma"), ExtResource("5_70ajc"
 [node name="HUD" parent="UILayer" instance=ExtResource("4_jjulr")]
 
 [node name="GameOver" parent="UILayer" instance=ExtResource("5_tompo")]
+visible = false
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 autostart = true
