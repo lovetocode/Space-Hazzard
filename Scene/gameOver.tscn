@@ -1,0 +1,116 @@
+[gd_scene load_steps=8 format=3 uid="uid://b6ndc6g2fbd0t"]
+
+[ext_resource type="Script" path="res://Scene/Scripts/gameOver.gd" id="1_mc1e0"]
+[ext_resource type="FontFile" uid="uid://iad64cm7cs4e" path="res://assets/Bonus/kenvector_future.ttf" id="1_w1h2o"]
+
+[sub_resource type="Theme" id="Theme_xl8i7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gr0iu"]
+bg_color = Color(0.945098, 0.313726, 0.729412, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_f1neo"]
+font = ExtResource("1_w1h2o")
+font_size = 45
+
+[sub_resource type="LabelSettings" id="LabelSettings_hyfw7"]
+font = ExtResource("1_w1h2o")
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_h67ro"]
+font = ExtResource("1_w1h2o")
+font_size = 45
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mc1e0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.160784, 0.0784314, 0.435294, 0.356863)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = -82.0
+offset_right = 195.0
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_xl8i7")
+theme_override_styles/panel = SubResource("StyleBoxFlat_gr0iu")
+
+[node name="Game Over" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -159.5
+offset_right = 159.5
+offset_bottom = 55.0
+grow_horizontal = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_f1neo")
+vertical_alignment = 1
+
+[node name="HichScore" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -177.0
+offset_top = 47.5
+offset_right = 175.0
+offset_bottom = 102.5
+grow_horizontal = 2
+text = "High Score:000
+"
+label_settings = SubResource("LabelSettings_hyfw7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.5
+offset_top = -20.0
+offset_right = 161.5
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Score: 999
+"
+label_settings = SubResource("LabelSettings_h67ro")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 171.0
+offset_right = 333.0
+offset_bottom = 222.0
+theme_override_fonts/font = ExtResource("1_w1h2o")
+theme_override_font_sizes/font_size = 35
+text = "Restart
+"
+
+[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]

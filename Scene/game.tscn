@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://81e4bcn82xym"]
+[gd_scene load_steps=8 format=3 uid="uid://81e4bcn82xym"]
 
 [ext_resource type="Script" path="res://Scene/Scripts/game.gd" id="1_2npcs"]
 [ext_resource type="PackedScene" uid="uid://cdkoo35c3fbvx" path="res://Scene/player.tscn" id="2_hgwsr"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bauvircuehham" path="res://Scene/hud.tscn" id="4_jjulr"]
 [ext_resource type="PackedScene" uid="uid://c3mfu6qgsdj3m" path="res://Scene/enemy.tscn" id="4_wcyma"]
 [ext_resource type="PackedScene" uid="uid://d1dro5gmhjuf8" path="res://Scene/diver.tscn" id="5_70ajc"]
+[ext_resource type="PackedScene" uid="uid://b6ndc6g2fbd0t" path="res://Scene/gameOver.tscn" id="5_tompo"]
 
 [node name="Game" type="Node2D"]
 position = Vector2(-4, 30)
@@ -15,6 +16,8 @@ enemy_scenes = Array[PackedScene]([ExtResource("4_wcyma"), ExtResource("5_70ajc"
 [node name="UILayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="UILayer" instance=ExtResource("4_jjulr")]
+
+[node name="GameOver" parent="UILayer" instance=ExtResource("5_tompo")]
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 autostart = true
