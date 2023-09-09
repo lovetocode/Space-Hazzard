@@ -1,17 +1,48 @@
-[gd_scene load_steps=8 format=3 uid="uid://81e4bcn82xym"]
+[gd_scene load_steps=13 format=3 uid="uid://81e4bcn82xym"]
 
 [ext_resource type="Script" path="res://Scene/Scripts/game.gd" id="1_2npcs"]
 [ext_resource type="PackedScene" uid="uid://cdkoo35c3fbvx" path="res://Scene/player.tscn" id="2_hgwsr"]
 [ext_resource type="PackedScene" uid="uid://c3pcdyiks1x4d" path="res://Scene/laser.tscn" id="3_e4en4"]
 [ext_resource type="PackedScene" uid="uid://bauvircuehham" path="res://Scene/hud.tscn" id="4_jjulr"]
+[ext_resource type="AudioStream" uid="uid://b0hexb8ufdcdn" path="res://assets/Bonus/sfx_laser1.ogg" id="4_vb2rr"]
 [ext_resource type="PackedScene" uid="uid://c3mfu6qgsdj3m" path="res://Scene/enemy.tscn" id="4_wcyma"]
 [ext_resource type="PackedScene" uid="uid://d1dro5gmhjuf8" path="res://Scene/diver.tscn" id="5_70ajc"]
+[ext_resource type="AudioStream" uid="uid://bx0452re7kqtp" path="res://assets/Bonus/sfx_zap.ogg" id="5_oxg1i"]
 [ext_resource type="PackedScene" uid="uid://b6ndc6g2fbd0t" path="res://Scene/gameOver.tscn" id="5_tompo"]
+[ext_resource type="AudioStream" uid="uid://d102urud380nx" path="res://assets/Bonus/sfx_lose.ogg" id="6_1goai"]
+[ext_resource type="Texture2D" uid="uid://byw0ntqkk0euq" path="res://assets/Backgrounds/purple.png" id="6_lqjut"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_re5e6"]
+emission_shape = 3
+emission_box_extents = Vector3(270, 1, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1000.0
+initial_velocity_max = 1000.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
 
 [node name="Game" type="Node2D"]
 position = Vector2(-4, 30)
 script = ExtResource("1_2npcs")
 enemy_scenes = Array[PackedScene]([ExtResource("4_wcyma"), ExtResource("5_70ajc")])
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="LaserSound" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("4_vb2rr")
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("5_oxg1i")
+volume_db = 5.0
+pitch_scale = 2.0
+
+[node name="ExplodeSound" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("6_1goai")
+volume_db = 10.0
+pitch_scale = 3.0
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
@@ -19,6 +50,25 @@ enemy_scenes = Array[PackedScene]([ExtResource("4_wcyma"), ExtResource("5_70ajc"
 
 [node name="GameOver" parent="UILayer" instance=ExtResource("5_tompo")]
 visible = false
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(0, 800)
+
+[node name="purpleStars" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_repeat = 2
+texture = ExtResource("6_lqjut")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 540, 800)
+
+[node name="StarParticles" type="GPUParticles2D" parent="."]
+position = Vector2(270, -50)
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_re5e6")
+lifetime = 1.25
+preprocess = 5.0
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 autostart = true

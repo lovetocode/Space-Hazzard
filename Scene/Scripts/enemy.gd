@@ -6,6 +6,8 @@ signal killed(points)
 @export var hp = 1
 @export var points = 100
 
+signal hit
+
  # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	global_position.y += speed * delta
@@ -26,3 +28,5 @@ func take_damage(amount):
 	if hp <= 0:
 		killed.emit(points)
 		die()
+	else:
+		hit.emit()
